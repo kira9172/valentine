@@ -1,0 +1,889 @@
+/* ===========================
+   RESET & BASE
+   =========================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  color: white;
+  text-align: center;
+  overflow: hidden;
+  height: 100vh;
+  background: #0a0008;
+}
+
+/* ===========================
+   BACKGROUND IMAGE + OVERLAY
+   =========================== */
+.bg-image {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('bg.jpg');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  z-index: 0;
+}
+
+.bg-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(10, 0, 8, 0.65);
+  z-index: 1;
+}
+
+/* ===========================
+   SCREENS
+   =========================== */
+.screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  opacity: 0;
+  transition: opacity 0.8s ease;
+  z-index: 10;
+}
+
+.screen.active {
+  display: flex;
+}
+
+.screen.visible {
+  opacity: 1;
+}
+
+.content {
+  max-width: 650px;
+  padding: 20px;
+  width: 100%;
+}
+
+/* ===========================
+   TAP-TO-ENTER SCREEN
+   =========================== */
+.tap-screen {
+  cursor: pointer;
+}
+
+.tap-title {
+  font-size: 5rem;
+  animation: tapPulse 2s ease-in-out infinite;
+  margin-bottom: 20px;
+}
+
+.tap-text {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.1rem;
+  opacity: 0.7;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  animation: tapFade 2s ease-in-out infinite;
+}
+
+@keyframes tapPulse {
+  0%, 100% { transform: scale(1); }
+  50%      { transform: scale(1.15); }
+}
+
+@keyframes tapFade {
+  0%, 100% { opacity: 0.4; }
+  50%      { opacity: 0.9; }
+}
+
+/* ===========================
+   TYPOGRAPHY
+   =========================== */
+h1 {
+  font-family: 'Dancing Script', cursive;
+  font-size: 3rem;
+  margin-bottom: 10px;
+  text-shadow: 0 0 20px rgba(255, 77, 109, 0.4);
+}
+
+h2 {
+  font-family: 'Dancing Script', cursive;
+  font-size: 2.2rem;
+  margin-bottom: 10px;
+  text-shadow: 0 0 15px rgba(255, 77, 109, 0.3);
+}
+
+.subtitle {
+  font-size: 1rem;
+  opacity: 0.7;
+  margin-bottom: 25px;
+  font-weight: 300;
+}
+
+/* ===========================
+   BUTTONS
+   =========================== */
+.btn {
+  padding: 14px 32px;
+  margin: 8px;
+  border: none;
+  border-radius: 50px;
+  font-size: 17px;
+  font-family: 'Poppins', sans-serif;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+}
+
+.btn:hover {
+  transform: scale(1.08);
+}
+
+.btn:active {
+  transform: scale(0.96);
+}
+
+.primary {
+  background: linear-gradient(135deg, #ff4d6d, #ff758f);
+  color: white;
+  box-shadow: 0 4px 20px rgba(255, 77, 109, 0.4);
+}
+
+.primary:hover {
+  background: linear-gradient(135deg, #ff758f, #ff4d6d);
+  box-shadow: 0 6px 30px rgba(255, 77, 109, 0.6);
+}
+
+.btn-group {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+}
+
+/* ===========================
+   VIBE GRID
+   =========================== */
+.vibe-grid {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.vibe-grid .btn {
+  flex: 1 1 calc(50% - 20px);
+  min-width: 200px;
+  font-size: 15px;
+  padding: 13px 20px;
+}
+
+/* ===========================
+   LOVE MESSAGE SCREENS
+   =========================== */
+.love-screen {
+  cursor: pointer;
+}
+
+.love-msg {
+  font-size: 3rem;
+  animation: lovePulse 1.5s ease-in-out infinite;
+}
+
+@keyframes lovePulse {
+  0%, 100% { transform: scale(1); }
+  50%      { transform: scale(1.05); }
+}
+
+/* ===========================
+   QUIZ STYLES
+   =========================== */
+.quiz-label {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.9rem;
+  opacity: 0.6;
+  margin-bottom: 10px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.quiz-question {
+  font-family: 'Dancing Script', cursive;
+  font-size: 2.2rem;
+  margin-bottom: 25px;
+  text-shadow: 0 0 15px rgba(255, 77, 109, 0.3);
+}
+
+.quiz-options {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.quiz-option {
+  background: rgba(255, 255, 255, 0.08);
+  color: white;
+  border: 2px solid rgba(255, 255, 255, 0.15);
+  min-width: 280px;
+  padding: 14px 28px;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(4px);
+}
+
+.quiz-option:hover {
+  background: rgba(255, 77, 109, 0.2);
+  border-color: rgba(255, 77, 109, 0.5);
+  transform: scale(1.05);
+}
+
+.quiz-option.correct {
+  background: rgba(72, 199, 116, 0.3) !important;
+  border-color: #48c774 !important;
+  transform: scale(1.05);
+}
+
+.quiz-option.wrong {
+  background: rgba(255, 77, 109, 0.3) !important;
+  border-color: #ff4d6d !important;
+}
+
+.quiz-option.disabled {
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+.quiz-reveal {
+  margin-top: 25px;
+  font-size: 1.15rem;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  font-style: italic;
+  color: #ffb3c1;
+  min-height: 30px;
+  cursor: pointer;
+}
+
+.quiz-reveal.show {
+  opacity: 1;
+}
+
+.quiz-reveal-hint {
+  display: block;
+  font-size: 0.75rem;
+  opacity: 0.4;
+  margin-top: 8px;
+  font-style: normal;
+}
+
+/* ===========================
+   BONUS ROUND
+   =========================== */
+.bonus-title {
+  font-family: 'Dancing Script', cursive;
+  font-size: 3rem;
+  animation: lovePulse 1.5s ease-in-out infinite;
+  text-shadow: 0 0 25px rgba(255, 77, 109, 0.5);
+}
+
+/* ===========================
+   SPECIAL OVERLAY (Q3)
+   =========================== */
+.special-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.92);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+  opacity: 0;
+  transition: opacity 0.8s ease;
+  cursor: pointer;
+}
+
+.special-overlay.active {
+  display: flex;
+}
+
+.special-overlay.visible {
+  opacity: 1;
+}
+
+.special-overlay-content h1 {
+  font-family: 'Dancing Script', cursive;
+  font-size: 2.8rem;
+  max-width: 600px;
+  line-height: 1.4;
+  padding: 20px;
+  color: #ffb3c1;
+  text-shadow: 0 0 30px rgba(255, 77, 109, 0.6);
+  animation: specialPulse 2s ease-in-out infinite;
+}
+
+@keyframes specialPulse {
+  0%, 100% { transform: scale(1); text-shadow: 0 0 30px rgba(255, 77, 109, 0.6); }
+  50%      { transform: scale(1.03); text-shadow: 0 0 50px rgba(255, 77, 109, 0.9); }
+}
+
+/* ===========================
+   UNLOCK SCREEN & EMOJI BOUQUET (after quiz)
+   =========================== */
+.unlock-text {
+  font-size: 2.5rem;
+  color: #ffb3c1;
+  margin-bottom: 30px;
+  opacity: 0;
+  animation: fadeSlideIn 1s ease 0.3s forwards;
+}
+
+@keyframes fadeSlideIn {
+  0%   { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+.bouquet {
+  position: relative;
+  width: 280px;
+  height: 280px;
+  margin: 10px auto;
+  opacity: 0;
+}
+
+.bouquet.bloom {
+  opacity: 1;
+}
+
+.rose {
+  position: absolute;
+  font-size: 36px;
+  opacity: 0;
+  transform: scale(0) rotate(-30deg);
+  transition: none;
+}
+
+.rose.bloomed {
+  animation: bloomIn 0.6s ease forwards;
+}
+
+@keyframes bloomIn {
+  0%   { opacity: 0; transform: scale(0) rotate(-30deg); }
+  60%  { opacity: 1; transform: scale(1.2) rotate(5deg); }
+  100% { opacity: 1; transform: scale(1) rotate(0deg); }
+}
+
+.bouquet-caption {
+  font-family: 'Dancing Script', cursive;
+  font-size: 1.8rem;
+  color: #ffb3c1;
+  margin-top: 15px;
+  opacity: 0;
+  transition: opacity 0.8s ease;
+}
+
+.bouquet-caption.show {
+  opacity: 1;
+}
+
+/* ===========================
+   VALENTINE BUTTONS
+   =========================== */
+.valentine-buttons {
+  position: relative;
+  margin-top: 30px;
+  min-height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.yes-btn {
+  background: linear-gradient(135deg, #ff4d6d, #ff758f);
+  color: white;
+  box-shadow: 0 4px 25px rgba(255, 77, 109, 0.5);
+  font-size: 18px;
+  transition: all 0.3s ease;
+  z-index: 20;
+}
+
+.yes-btn:hover {
+  box-shadow: 0 6px 35px rgba(255, 77, 109, 0.7);
+}
+
+.no-btn {
+  background: #444;
+  color: #ccc;
+  position: absolute;
+  transition: none;
+  z-index: 15;
+}
+
+/* ===========================
+   FLOATING HEARTS
+   =========================== */
+.heart {
+  position: fixed;
+  animation: floatUp linear infinite;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 2;
+}
+
+@keyframes floatUp {
+  0%   { opacity: 0; transform: translateY(100vh) rotate(0deg) scale(0.5); }
+  15%  { opacity: 0.8; }
+  85%  { opacity: 0.6; }
+  100% { opacity: 0; transform: translateY(-10vh) rotate(360deg) scale(1.2); }
+}
+
+/* ===========================
+   HEART EXPLOSION
+   =========================== */
+@keyframes explode {
+  0%   { transform: translate(0, 0) scale(0); opacity: 1; }
+  100% { transform: translate(var(--x), var(--y)) scale(1.5); opacity: 0; }
+}
+
+.exploding-heart {
+  position: fixed;
+  pointer-events: none;
+  z-index: 999;
+}
+
+/* ===========================
+   FINALE
+   =========================== */
+.final-plan {
+  font-size: 1.3rem;
+  margin: 15px 0;
+  padding: 15px 25px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 15px;
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.final-plan strong {
+  color: #ff758f;
+}
+
+.love-note {
+  margin-top: 25px;
+  opacity: 0.5;
+  font-style: italic;
+  font-size: 0.95rem;
+}
+
+/* ===========================
+   ROSES BOUQUET GIFT SCREEN
+   =========================== */
+.bouquet-gift-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  max-width: 500px;
+}
+
+.gift-heading {
+  font-family: 'Dancing Script', cursive;
+  font-size: 2.5rem;
+  color: #ffb3c1;
+  text-shadow: 0 0 25px rgba(255, 77, 109, 0.5);
+  margin-bottom: 10px;
+  opacity: 0;
+  animation: fadeSlideIn 1s ease 0.3s forwards;
+}
+
+.roses-image-wrapper {
+  position: relative;
+  width: 280px;
+  height: 280px;
+  margin: 0 auto;
+  opacity: 0;
+  animation: roseImageIn 1.2s ease 0.8s forwards;
+}
+
+.roses-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 20px;
+  border: 2px solid rgba(255, 77, 109, 0.3);
+  box-shadow: 0 8px 40px rgba(255, 77, 109, 0.3);
+  position: relative;
+  z-index: 2;
+}
+
+.roses-glow {
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  right: -10px;
+  bottom: -10px;
+  border-radius: 25px;
+  background: radial-gradient(circle, rgba(255, 77, 109, 0.25) 0%, transparent 70%);
+  z-index: 1;
+  animation: glowPulse 3s ease-in-out infinite;
+}
+
+@keyframes roseImageIn {
+  0%   { opacity: 0; transform: scale(0.7) rotate(-5deg); }
+  60%  { opacity: 1; transform: scale(1.05) rotate(2deg); }
+  100% { opacity: 1; transform: scale(1) rotate(0deg); }
+}
+
+@keyframes glowPulse {
+  0%, 100% { opacity: 0.5; transform: scale(1); }
+  50%      { opacity: 1; transform: scale(1.05); }
+}
+
+/* ===========================
+   ENVELOPE
+   =========================== */
+.envelope {
+  margin-top: 25px;
+  width: 200px;
+  height: 130px;
+  position: relative;
+  cursor: pointer;
+  opacity: 0;
+  animation: envelopeIn 0.8s ease 2s forwards;
+  transition: transform 0.3s ease;
+}
+
+.envelope:hover {
+  transform: scale(1.08);
+}
+
+.envelope:active {
+  transform: scale(0.96);
+}
+
+.envelope-body {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #f5e6d0, #eedcc4);
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+  box-shadow:
+    0 4px 20px rgba(0, 0, 0, 0.3),
+    inset 0 2px 8px rgba(255, 255, 255, 0.3);
+  border: 1px solid rgba(180, 150, 110, 0.5);
+}
+
+.envelope-flap {
+  position: absolute;
+  top: -1px;
+  left: 0;
+  width: 100%;
+  height: 65px;
+  z-index: 3;
+  clip-path: polygon(0 0, 50% 100%, 100% 0);
+  background: linear-gradient(180deg, #e8d5bc, #dcc8ae);
+  border-radius: 8px 8px 0 0;
+  transform-origin: top center;
+  animation: flapWiggle 3s ease-in-out infinite;
+}
+
+@keyframes flapWiggle {
+  0%, 100% { transform: rotateX(0deg); }
+  50%      { transform: rotateX(15deg); }
+}
+
+.envelope-text {
+  font-family: 'Caveat', cursive;
+  font-size: 1.5rem;
+  color: #6b4c3b;
+  font-weight: 600;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  margin-top: 15px;
+  animation: textPulse 2s ease-in-out infinite;
+}
+
+@keyframes textPulse {
+  0%, 100% { opacity: 0.8; }
+  50%      { opacity: 1; }
+}
+
+@keyframes envelopeIn {
+  0%   { opacity: 0; transform: translateY(30px) scale(0.8); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* Envelope open animation */
+.envelope.opening .envelope-flap {
+  animation: flapOpen 0.6s ease forwards;
+}
+
+.envelope.opening .envelope-body {
+  animation: envelopeFly 0.8s ease 0.4s forwards;
+}
+
+@keyframes flapOpen {
+  0%   { transform: rotateX(0deg); }
+  100% { transform: rotateX(180deg); }
+}
+
+@keyframes envelopeFly {
+  0%   { transform: translateY(0) scale(1); opacity: 1; }
+  100% { transform: translateY(-60px) scale(0.5); opacity: 0; }
+}
+
+/* ===========================
+   LOVE LETTER (Caveat font)
+   =========================== */
+.letter-wrapper {
+  width: 100%;
+  max-width: 600px;
+  max-height: 85vh;
+  overflow-y: auto;
+  padding: 15px;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 77, 109, 0.3) transparent;
+}
+
+.letter-wrapper::-webkit-scrollbar {
+  width: 6px;
+}
+
+.letter-wrapper::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.letter-wrapper::-webkit-scrollbar-thumb {
+  background: rgba(255, 77, 109, 0.3);
+  border-radius: 10px;
+}
+
+.letter {
+  font-family: 'Caveat', cursive;
+  font-size: 1.5rem;
+  font-weight: 500;
+  line-height: 1.8;
+  color: #ffe0e6;
+  text-align: left;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  padding: 40px 35px;
+  backdrop-filter: blur(6px);
+  position: relative;
+  box-shadow:
+    0 0 40px rgba(255, 77, 109, 0.1),
+    inset 0 0 60px rgba(255, 77, 109, 0.03);
+}
+
+.letter::before {
+  content: '💌';
+  position: absolute;
+  top: -18px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 2rem;
+}
+
+.letter p {
+  margin-bottom: 18px;
+  opacity: 0;
+  animation: letterFadeIn 0.8s ease forwards;
+}
+
+.letter p:nth-child(1)  { animation-delay: 0.3s; }
+.letter p:nth-child(2)  { animation-delay: 0.9s; }
+.letter p:nth-child(3)  { animation-delay: 1.5s; }
+.letter p:nth-child(4)  { animation-delay: 2.1s; }
+.letter p:nth-child(5)  { animation-delay: 2.7s; }
+.letter p:nth-child(6)  { animation-delay: 3.3s; }
+
+.letter .poem {
+  opacity: 0;
+  animation: letterFadeIn 1s ease 3.9s forwards;
+}
+
+.letter .poem-credit {
+  animation-delay: 5.5s;
+}
+
+.letter .letter-footer {
+  opacity: 0;
+  animation: letterFadeIn 1s ease 6.2s forwards;
+}
+
+@keyframes letterFadeIn {
+  0%   { opacity: 0; transform: translateY(10px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+.letter-shout {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #ff758f;
+  text-shadow: 0 0 20px rgba(255, 77, 109, 0.5);
+  text-align: center;
+  animation-delay: 2.1s;
+}
+
+.letter-transition {
+  font-style: italic;
+  opacity: 0.8;
+}
+
+/* ===========================
+   POEM
+   =========================== */
+.poem {
+  margin: 20px 0;
+  padding: 20px 25px;
+  border-left: 3px solid rgba(255, 77, 109, 0.4);
+  background: rgba(255, 77, 109, 0.04);
+  border-radius: 0 12px 12px 0;
+}
+
+.poem p {
+  font-family: 'Caveat', cursive;
+  font-size: 1.4rem;
+  margin-bottom: 8px;
+  color: #ffb3c1;
+  font-style: italic;
+  animation: none !important;
+  opacity: 1 !important;
+}
+
+.poem-credit {
+  font-family: 'Caveat', cursive;
+  text-align: right;
+  font-size: 1.3rem;
+  color: #ff758f;
+  opacity: 0.8;
+  margin-top: 5px;
+}
+
+.letter-footer {
+  text-align: center;
+  margin-top: 25px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.letter-footer p {
+  font-family: 'Caveat', cursive;
+  font-size: 1.7rem;
+  font-weight: 700;
+  color: #ff758f;
+  text-shadow: 0 0 15px rgba(255, 77, 109, 0.4);
+  animation: none !important;
+  opacity: 1 !important;
+}
+
+/* ===========================
+   RESPONSIVE
+   =========================== */
+@media (max-width: 600px) {
+  h1 {
+    font-size: 2rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+
+  .love-msg {
+    font-size: 2.2rem;
+  }
+
+  .tap-title {
+    font-size: 4rem;
+  }
+
+  .btn {
+    padding: 12px 22px;
+    font-size: 15px;
+  }
+
+  .vibe-grid .btn {
+    flex: 1 1 100%;
+    min-width: unset;
+  }
+
+  .quiz-option {
+    min-width: 240px;
+    font-size: 14px;
+  }
+
+  .quiz-question {
+    font-size: 1.8rem;
+  }
+
+  .special-overlay-content h1 {
+    font-size: 2rem;
+  }
+
+  .unlock-text {
+    font-size: 1.8rem;
+  }
+
+  .bouquet {
+    width: 220px;
+    height: 220px;
+  }
+
+  .rose {
+    font-size: 28px;
+  }
+
+  .gift-heading {
+    font-size: 1.8rem;
+  }
+
+  .roses-image-wrapper {
+    width: 220px;
+    height: 220px;
+  }
+
+  .envelope {
+    width: 170px;
+    height: 110px;
+  }
+
+  .envelope-flap {
+    height: 55px;
+  }
+
+  .envelope-text {
+    font-size: 1.3rem;
+  }
+
+  .letter {
+    font-size: 1.3rem;
+    padding: 30px 22px;
+  }
+
+  .letter-shout {
+    font-size: 1.5rem;
+  }
+
+  .poem p {
+    font-size: 1.2rem;
+  }
+
+  .letter-wrapper {
+    max-height: 80vh;
+    padding: 10px;
+  }
+}

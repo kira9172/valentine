@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>For You ❤️</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Dancing+Script:wght@500;700&family=Poppins:wght@300;400;600&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- Background image layer -->
+  <div class="bg-image"></div>
+  <div class="bg-overlay"></div>
+
+  <!-- Background music -->
+  <audio id="bgMusic" loop>
+    <source src="song.mp3" type="audio/mpeg" />
+  </audio>
+
+  <!-- ========== SCREEN 0: Tap to Enter ========== -->
+  <div id="screen0" class="screen active">
+    <div class="content tap-screen">
+      <h1 class="tap-title">💌</h1>
+      <p class="tap-text">Tap anywhere to open</p>
+    </div>
+  </div>
+
+  <!-- ========== SCREEN 1: Welcome ========== -->
+  <div id="screen1" class="screen">
+    <div class="content">
+      <h1>I made something for you ❤️</h1>
+      <p class="subtitle">Go ahead, click the button 👀</p>
+      <button class="btn primary" onclick="nextScreen('screen2')">Start</button>
+    </div>
+  </div>
+
+  <!-- ========== SCREEN 2: Online All-Day Date Vibe ========== -->
+  <div id="screen2" class="screen">
+    <div class="content">
+      <h2>Pick our date vibe 🌙</h2>
+      <p class="subtitle">Screenshare ready. Snacks ready. Ru ready? ❤️</p>
+      <div class="btn-group vibe-grid">
+        <button class="btn primary" onclick="pickVibe('Movie Marathon 🍿')">Movie Marathon 🍿</button>
+        <button class="btn primary" onclick="pickVibe('Game Night 🎮')">Game Night 🎮</button>
+        <button class="btn primary" onclick="pickVibe('Movie + Games Combo 😈💞')">Movie + Games Combo 😈💞</button>
+        <button class="btn primary" onclick="pickVibe('Soft & Romantic ✨')">Soft &amp; Romantic ✨</button>
+        <button class="btn primary" onclick="pickVibe('Brooklyn 99 Night (Comfort Mode) 🕺')">Brooklyn 99 Night (Comfort Mode) 🕺</button>
+        <button class="btn primary" onclick="pickVibe('All, we got all day!! ⏳❤️')">All, we got all day!! ⏳❤️</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== SCREEN 3: Love Message 1 ========== -->
+  <div id="screen3" class="screen love-screen">
+    <div class="content">
+      <h1 class="love-msg">I love you sooooooo muchhhhhh!!!!!!!</h1>
+    </div>
+  </div>
+
+  <!-- ========== SCREEN 4: Love Message 2 ========== -->
+  <div id="screen4" class="screen love-screen">
+    <div class="content">
+      <h1 class="love-msg">betammmmmmmmmmmmmmmm</h1>
+    </div>
+  </div>
+
+  <!-- ========== QUIZ SCREEN ========== -->
+  <div id="screenQuiz" class="screen">
+    <div class="content" id="quizContent"></div>
+  </div>
+
+  <!-- ========== UNLOCK SCREEN: Emoji Bouquet (after quiz) ========== -->
+  <div id="screenUnlock" class="screen">
+    <div class="content">
+      <h1 class="unlock-text" id="unlockText">You passed… but I already chose you.</h1>
+      <div class="bouquet" id="bouquet"></div>
+      <p class="bouquet-caption" id="bouquetCaption">For you, Ru 🌹</p>
+    </div>
+  </div>
+
+  <!-- ========== VALENTINE QUESTION ========== -->
+  <div id="screenValentine" class="screen">
+    <div class="content">
+      <h1>One last question...</h1>
+      <h2>Will you be my Valentine? 💘</h2>
+      <div class="valentine-buttons">
+        <button id="yesBtn" class="btn yes-btn" onclick="sayYes()">YES ❤️</button>
+        <button id="noBtn" class="btn no-btn">NO 💔</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== FINALE (plan summary) ========== -->
+  <div id="screenFinale" class="screen">
+    <div class="content" id="finalMsg"></div>
+  </div>
+
+  <!-- ========== ROSES BOUQUET + OPEN ME ENVELOPE ========== -->
+  <div id="screenBouquet" class="screen">
+    <div class="content bouquet-gift-content">
+      <h1 class="gift-heading">These are for you, Ru 🌹</h1>
+      <div class="roses-image-wrapper">
+        <img src="roses.jpg" alt="Roses for you" class="roses-image" />
+        <div class="roses-glow"></div>
+      </div>
+      <div class="envelope" id="envelope" onclick="openEnvelope()">
+        <div class="envelope-flap"></div>
+        <div class="envelope-body">
+          <p class="envelope-text">Open Me 💌</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== LOVE LETTER ========== -->
+  <div id="screenLetter" class="screen">
+    <div class="letter-wrapper">
+      <div class="letter">
+        <p>Baby, you're a literal blessing from God to me. I didn't realize it then but the day I met you was probably the best day in my life, because on that day I met someone who I came to fall in love with so madly and also want to spend every bit of the rest of my life with.</p>
+
+        <p>Just the thought of you is enough to make me forget my troubles and start smiling, you make me so happy!</p>
+
+        <p>One day, by God's will, we'll celebrate in person… but until then, this will have to suffice ig 🙂</p>
+
+        <p class="letter-shout">I LOVE YOU SOOOOOOOO MUCHHHHHH!!!</p>
+
+        <p>More than I can explain yene fikir.</p>
+
+        <p class="letter-transition">So I had to borrow a poem:</p>
+
+        <div class="poem">
+          <p>You are the storm I walk into willingly</p>
+          <p>the fire I touch without fear of the burn</p>
+          <p>you live in the spaces between my thoughts</p>
+          <p>where reason ends and longing begins</p>
+          <p>you are every heartbeat that forgets its rhythm</p>
+          <p>every breath that aches to be near you</p>
+          <p>loving you is not a choice</p>
+          <p>it's a beautiful kind of madness I never want to heal from</p>
+        </div>
+
+        <p class="poem-credit">— Iskra</p>
+
+        <div class="letter-footer">
+          <p>Forever yours ❤️</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== SPECIAL OVERLAY (Q3) ========== -->
+  <div id="specialOverlay" class="special-overlay">
+    <div class="special-overlay-content">
+      <h1 id="specialOverlayText"></h1>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
