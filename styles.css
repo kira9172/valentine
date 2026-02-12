@@ -1,0 +1,248 @@
+/* ===========================
+   RESET & BASE
+   =========================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  color: white;
+  text-align: center;
+  overflow: hidden;
+  height: 100vh;
+  background: linear-gradient(135deg, #1a0011, #2d0a1e, #0d0d2b);
+  background-size: 400% 400%;
+  animation: gradientShift 10s ease infinite;
+}
+
+@keyframes gradientShift {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* ===========================
+   SCREENS
+   =========================== */
+.screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  opacity: 0;
+  transition: opacity 0.8s ease;
+  z-index: 10;
+}
+
+.screen.active {
+  display: flex;
+}
+
+.screen.visible {
+  opacity: 1;
+}
+
+.content {
+  max-width: 600px;
+  padding: 20px;
+}
+
+/* ===========================
+   TYPOGRAPHY
+   =========================== */
+h1 {
+  font-family: 'Dancing Script', cursive;
+  font-size: 3rem;
+  margin-bottom: 10px;
+  text-shadow: 0 0 20px rgba(255, 77, 109, 0.4);
+}
+
+h2 {
+  font-family: 'Dancing Script', cursive;
+  font-size: 2.2rem;
+  margin-bottom: 10px;
+  text-shadow: 0 0 15px rgba(255, 77, 109, 0.3);
+}
+
+.subtitle {
+  font-size: 1rem;
+  opacity: 0.7;
+  margin-bottom: 25px;
+  font-weight: 300;
+}
+
+/* ===========================
+   BUTTONS
+   =========================== */
+.btn {
+  padding: 14px 32px;
+  margin: 10px;
+  border: none;
+  border-radius: 50px;
+  font-size: 18px;
+  font-family: 'Poppins', sans-serif;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+}
+
+.btn:hover {
+  transform: scale(1.08);
+}
+
+.btn:active {
+  transform: scale(0.96);
+}
+
+.primary {
+  background: linear-gradient(135deg, #ff4d6d, #ff758f);
+  color: white;
+  box-shadow: 0 4px 20px rgba(255, 77, 109, 0.4);
+}
+
+.primary:hover {
+  background: linear-gradient(135deg, #ff758f, #ff4d6d);
+  box-shadow: 0 6px 30px rgba(255, 77, 109, 0.6);
+}
+
+.btn-group {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+
+/* ===========================
+   VALENTINE BUTTONS
+   =========================== */
+.valentine-buttons {
+  position: relative;
+  margin-top: 30px;
+  min-height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.yes-btn {
+  background: linear-gradient(135deg, #ff4d6d, #ff758f);
+  color: white;
+  box-shadow: 0 4px 25px rgba(255, 77, 109, 0.5);
+  font-size: 18px;
+  transition: all 0.3s ease;
+  z-index: 20;
+}
+
+.yes-btn:hover {
+  box-shadow: 0 6px 35px rgba(255, 77, 109, 0.7);
+}
+
+.no-btn {
+  background: #444;
+  color: #ccc;
+  position: absolute;
+  transition: none;
+  z-index: 15;
+}
+
+/* ===========================
+   FLOATING HEARTS
+   =========================== */
+.heart {
+  position: fixed;
+  animation: floatUp linear infinite;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+@keyframes floatUp {
+  0% {
+    opacity: 0;
+    transform: translateY(100vh) rotate(0deg) scale(0.5);
+  }
+  15% {
+    opacity: 0.8;
+  }
+  85% {
+    opacity: 0.6;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-10vh) rotate(360deg) scale(1.2);
+  }
+}
+
+/* ===========================
+   HEART EXPLOSION
+   =========================== */
+@keyframes explode {
+  0% {
+    transform: translate(0, 0) scale(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(var(--x), var(--y)) scale(1.5);
+    opacity: 0;
+  }
+}
+
+.exploding-heart {
+  position: fixed;
+  pointer-events: none;
+  z-index: 999;
+}
+
+/* ===========================
+   FINAL SCREEN EXTRAS
+   =========================== */
+.final-plan {
+  font-size: 1.3rem;
+  margin: 15px 0;
+  padding: 15px 25px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 15px;
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.final-plan strong {
+  color: #ff758f;
+}
+
+.love-note {
+  margin-top: 25px;
+  opacity: 0.5;
+  font-style: italic;
+  font-size: 0.95rem;
+}
+
+/* ===========================
+   RESPONSIVE
+   =========================== */
+@media (max-width: 600px) {
+  h1 {
+    font-size: 2.2rem;
+  }
+
+  h2 {
+    font-size: 1.6rem;
+  }
+
+  .btn {
+    padding: 12px 24px;
+    font-size: 16px;
+  }
+
+  .btn-group {
+    flex-direction: column;
+    align-items: center;
+  }
+}
